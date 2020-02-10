@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>C++ 复合类型 | Konoleoda&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数组  初始化规则 123456int cards[4] &#x3D; &amp;#123;1, 2, 3, 4&amp;#125;; &#x2F;&#x2F;okayint hand[4]; &#x2F;&#x2F; okayhand[4] &#x3D; &amp;#123;1, 2, 3, 4&amp;#125; &#x2F;&#x2F; not allowedhand &#x3D; cards; &#x2F;&#x2F; not allowed, 不允许静态数组相互赋值，必须单个单个赋值。可使用array取代short thin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 复合类型">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Konoleoda&#39;s Blog">
+<meta property="og:description" content="数组  初始化规则 123456int cards[4] &#x3D; &amp;#123;1, 2, 3, 4&amp;#125;; &#x2F;&#x2F;okayint hand[4]; &#x2F;&#x2F; okayhand[4] &#x3D; &amp;#123;1, 2, 3, 4&amp;#125; &#x2F;&#x2F; not allowedhand &#x3D; cards; &#x2F;&#x2F; not allowed, 不允许静态数组相互赋值，必须单个单个赋值。可使用array取代short thin">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-10T15:23:52.000Z">
+<meta property="article:modified_time" content="2020-02-10T15:28:52.565Z">
+<meta property="article:author" content="Liu Chao">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="cv">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Konoleoda&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Konoleoda&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C++复合类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time datetime="2020-02-10T15:23:52.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-Learning/">C++ Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++ 复合类型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>数组</p>
+<ul>
+<li><p>初始化规则</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cards[<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;; <span class="comment">//okay</span></span><br><span class="line"><span class="keyword">int</span> hand[<span class="number">4</span>]; <span class="comment">// okay</span></span><br><span class="line">hand[<span class="number">4</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125; <span class="comment">// not allowed</span></span><br><span class="line">hand = cards; <span class="comment">// not allowed, 不允许静态数组相互赋值，必须单个单个赋值。可使用array取代</span></span><br><span class="line"></span><br><span class="line">short things[<span class="number">500</span>] = &#123;<span class="number">1</span>&#125; <span class="comment">// 只有第0个元素为1，其他都为0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>字符串</p>
+<ul>
+<li><p>sizeof和strlen</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sizeof</span>(a) <span class="comment">//得出字节(byte)数</span></span><br><span class="line"><span class="built_in">strlen</span> <span class="comment">// 返回字符数量，末尾的'\0'不计算在内</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串拼接</p>
+<p>如果字符串过长，可以使用两个“”进行字符串拼接</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str1[] == <span class="string">"AA"</span><span class="string">"BB"</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(str1) &lt;&lt;<span class="built_in">endl</span>; <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>string类</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#incluede <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="built_in">string</span> str1;</span><br><span class="line"><span class="built_in">string</span> str2 = <span class="string">"ss"</span>;</span><br><span class="line"><span class="comment">//string定义的字符串可以自动调整大小，可以动态变化，并且可以使用运算符拼接。</span></span><br><span class="line"></span><br><span class="line">str1 = str2 + str1;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结构体</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//声明</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">inflatable</span></span></span><br><span class="line"><span class="class">  &#123;</span></span><br><span class="line">      <span class="keyword">char</span> name;</span><br><span class="line">  &#125; in, *p;</span><br><span class="line">  <span class="comment">//访问</span></span><br><span class="line">in.name;</span><br><span class="line">  p-&gt;name;</span><br><span class="line">(*p).name;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>**NOTE**
+
+1. 如果结构标识符是结构名，则使用句点运算符；
+2. 如果结构标识符是指向结构的指针，则使用箭头运算符。
+
+- 共用体
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">union</span> id</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">double</span> g;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//匿名共用体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">te</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> name;</span><br><span class="line">    <span class="keyword">union</span> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">double</span> g;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; tei;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 访问</span></span><br><span class="line">tei.i = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//普通共用体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">te</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> name;</span><br><span class="line">    <span class="keyword">union</span> id</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">double</span> g;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; tei;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 访问</span></span><br><span class="line">tei.id.i = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></code></pre><ul>
+<li><p>enum 枚举</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> spectrum &#123;red, orange, yellow, green, blue, violet, indigo, ultraviolet&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>指针</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &amp; 取地址运算符</span></span><br><span class="line"><span class="comment">// * 解除引用运算符</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用new 分配内存 / 使用delete释放内存 </p>
+<p>new/delete 操作的是<strong>堆(heap)</strong>空间</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建数据对象指针</span></span><br><span class="line"><span class="keyword">int</span>* p = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br><span class="line"><span class="comment">// 创建动态数组</span></span><br><span class="line"><span class="keyword">int</span>* p = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">delete</span> [] p;</span><br></pre></td></tr></table></figure>
+
+<p>遵循的原则：</p>
+<ol>
+<li>不要使用delete来释放不是new分配的内存</li>
+<li>不要使用delete释放同一个内存块两次</li>
+<li>如果使用new[]为数组分配内存，则应该使用delete[]来释放</li>
+<li>如果使用new，则应该使用delete释放</li>
+<li>对空指针应用delete是安全的</li>
+</ol>
+</li>
+<li><p>指针、数组和指针算术</p>
+<p>在多数情况下，C++将数组名解释为数组的第一个元素的地址。因此可以直接使用地址[索引]访问数组。</p>
+<p><strong>NOTE</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> wages[<span class="number">3</span>] = &#123;<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>&#125;;</span><br><span class="line"><span class="keyword">double</span>* pw = wages;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(wages) &lt;&lt; <span class="string">" = size of wages array"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(pw) &lt;&lt; <span class="string">" = size of pw pointer\n"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 得到结果如下：</span></span><br><span class="line"><span class="comment">//24 = size of wages array  整个数组的大小</span></span><br><span class="line"><span class="comment">//8 = size of pw pointer  指针变量的大小</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//对于char数组</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span>* str1 = <span class="string">"here"</span>;</span><br><span class="line"><span class="keyword">char</span> str2[] = <span class="string">"here"</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="built_in">strlen</span>(str1) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="built_in">strlen</span>(str2) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(str1) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="keyword">sizeof</span>(str2) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//结果</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<p>上面对数组名和数组指针使用sizeof时得到的值不同，因为对数组名使用sizeof得到的是数组的长度，对指针应用sizeof得到的指针的长度。所以在double类型指针的结果中，对wage应用sizeof就是24byte，对pw应用sizeof就是8byte；在char类型的指针测试结果中，strlen函数因为以‘\0’为结束，所以结果相同，而sizeof对str1的结果是因为const指针为8byte,C++中“here”为<strong>常量字符串</strong>，必须为<strong>const指针类型</strong>指向内存或用<strong>数组</strong>保存。</p>
+</li>
+</ul>
+</li>
+<li><p>数组的替代品，vector和array都是数组，都可以按照数组的方式访问</p>
+<ul>
+<li><p>vector模板类-动态数组的替代品, 使用堆存储</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vi; <span class="comment">// create a zero-size array of int</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; <span class="title">vd</span><span class="params">(n)</span></span>; <span class="comment">// create an array of n doubles</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- array模板类- 静态数组的替代品, 使用栈存储
+
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;array&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>, 6&gt; ai;</span><br><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>, 3&gt; ad = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="comment">// 与普通数组用法相同</span></span><br></pre></td></tr></table></figure>
+
+**NOTE**
+
+1. 无论数组、vector对象或者array对象，都可以使用标准数组表示法来访问各个元素，例如a[0]
+
+2. array对象和数组存储在相同的内存区域-栈中，而vector对象存储在堆中
+
+3. array对象与数组不同的地方在于，一个array对象可以直接复制给另一个array对象，而标准数组不允许，必须单个值拷贝。
+
+   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>, 10&gt; ar1;</span><br><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>, 10&gt; ar2=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">ar1 = ar2; <span class="comment">// allowed!</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">int</span> b[<span class="number">10</span>] = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">a = b; <span class="comment">// not allowed;</span></span><br></pre></td></tr></table></figure>
+
+4. **stl**的数组可以**避免索引越界**，但仅在使用a.**at(-2)**成员函数时才有效，效率对比a[-2]要低一些。</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/" data-id="ck6gmc51k00009gjd5zxigg6m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/10/C++%E5%BC%80%E5%A7%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C++ 开始</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Learning/">C++ Learning</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/">C++ 复合类型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%BC%80%E5%A7%8B/">C++ 开始</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0/">C++ 循环和函数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Liu Chao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

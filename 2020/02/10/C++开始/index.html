@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>C++ 开始 | Konoleoda&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="名称空间 using编译指令  名称空间是用来区分不同库的相同函数名，仅当引用头文件没有.h时使用名称空间。   123456&#x2F;&#x2F; 方式1：全部引用，可以直接调用std名称空间的全部函数。using namespace std;&#x2F;&#x2F; 方式2：单独引用，仅可以直接调用std名称空间的cout和endl。using std::cout;using std::endl;  变量的声明  定义声明(de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 开始">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/C++%E5%BC%80%E5%A7%8B/index.html">
+<meta property="og:site_name" content="Konoleoda&#39;s Blog">
+<meta property="og:description" content="名称空间 using编译指令  名称空间是用来区分不同库的相同函数名，仅当引用头文件没有.h时使用名称空间。   123456&#x2F;&#x2F; 方式1：全部引用，可以直接调用std名称空间的全部函数。using namespace std;&#x2F;&#x2F; 方式2：单独引用，仅可以直接调用std名称空间的cout和endl。using std::cout;using std::endl;  变量的声明  定义声明(de">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-10T15:23:52.000Z">
+<meta property="article:modified_time" content="2020-02-10T15:28:42.939Z">
+<meta property="article:author" content="Liu Chao">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="cv">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Konoleoda&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Konoleoda&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C++开始" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/C++%E5%BC%80%E5%A7%8B/" class="article-date">
+  <time datetime="2020-02-10T15:23:52.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-Learning/">C++ Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++ 开始
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>名称空间 using编译指令<br>  名称空间是用来区分不同库的相同函数名，仅当引用头文件没有.h时使用名称空间。</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式1：全部引用，可以直接调用std名称空间的全部函数。</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式2：单独引用，仅可以直接调用std名称空间的cout和endl。</span></span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">cout</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量的声明</p>
+<ul>
+<li><p>定义声明(defining declaration)</p>
+<p>声明即定义，在同一个文件</p>
+</li>
+<li><p>引用声明(reference declaration)</p>
+<p>A文件声明，B文件定义</p>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/10/C++%E5%BC%80%E5%A7%8B/" data-id="ck6gmc51q00019gjd6xqu0p2s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C++ 复合类型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/10/C++%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C++ 循环和函数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Learning/">C++ Learning</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/">C++ 复合类型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%BC%80%E5%A7%8B/">C++ 开始</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0/">C++ 循环和函数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Liu Chao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
