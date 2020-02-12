@@ -68,6 +68,167 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-L1-Introduction-to-Deep-Learning" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/12/L1-Introduction-to-Deep-Learning/" class="article-date">
+  <time datetime="2020-02-12T12:06:05.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MIT6-S191/">MIT6.S191</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/12/L1-Introduction-to-Deep-Learning/">L1_Introduction_to_Deep_Learning</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="The-Perceptron"><a href="#The-Perceptron" class="headerlink" title="The Perceptron"></a>The Perceptron</h1><ul>
+<li>Forward Propagation</li>
+</ul>
+<p><img src="L1-Introduction-to-Deep-Learning/1.png" alt=""></p>
+<h1 id="Common-Activation-Functions"><a href="#Common-Activation-Functions" class="headerlink" title="Common Activation Functions"></a>Common Activation Functions</h1><p><strong>NOTE:</strong> All activation functions are non-linear</p>
+<ol>
+<li><p>Simoid </p>
+<p><img src="L1-Introduction-to-Deep-Learning/1.png" alt="image-20200130212327599"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>Hyperbolic Tangent</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130212514483.png" alt="image-20200130212514483"></p>
+</li>
+<li><p>Rectified Linear Unit(ReLU)</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130212527501.png" alt="image-20200130212527501"></p>
+</li>
+</ol>
+<h1 id="Multi-Output-Perceptron"><a href="#Multi-Output-Perceptron" class="headerlink" title="Multi Output Perceptron"></a>Multi Output Perceptron</h1><p>Because all inputs are densely connected to all outputs, these layers are called <strong>Dense</strong> layers.(全连接)</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130213441747.png" alt="image-20200130213441747"></p>
+<ul>
+<li><p>Tensorflow implements Dense layer</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDenseLayer</span><span class="params">(tf.keras.layers.Layer)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_dim, output_dim)</span>:</span></span><br><span class="line">        super(MyDenseLayer, self).__init__()</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># Initialize weights and bias</span></span><br><span class="line">    self.W = self.add_weights([input_dim, output_dim])</span><br><span class="line">    self.b = self.add_weights([<span class="number">1</span>, output_dim])</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(self, inputs)</span>:</span></span><br><span class="line">        <span class="comment"># Forward propagate the inputs</span></span><br><span class="line">        z = tf.matmul(inputs, self.W) + self.b</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Feed through a non-linear activation</span></span><br><span class="line">        output = tf.math.sigmoid(z)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
+
+<p>对应于keras的实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">layer = tf.keras.layer.Dense(units=<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example</span></span><br><span class="line"><span class="comment"># as first layer in a sequential model:</span></span><br><span class="line">model = Sequential()</span><br><span class="line">model.add(Dense(<span class="number">32</span>, input_shape=(<span class="number">16</span>,)))</span><br><span class="line"><span class="comment"># now the model will take as input arrays of shape (*, 16)</span></span><br><span class="line"><span class="comment"># and output arrays of shape (*, 32)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># after the first layer, you don't need to specify</span></span><br><span class="line"><span class="comment"># the size of the input anymore:</span></span><br><span class="line">model.add(Dense(<span class="number">32</span>))</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="Applying-Neural-Networks"><a href="#Applying-Neural-Networks" class="headerlink" title="Applying Neural Networks"></a>Applying Neural Networks</h1><ul>
+<li><p>Quantifying Loss</p>
+<p>The  <strong>losss</strong> of our neural network measures the cost incurred from incorrect predictions</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130215234007.png" alt="image-20200130215234007"></p>
+</li>
+<li><p>Empirical Loss 经验损失</p>
+<p>Also known as: </p>
+<pre><code>- **Objective function(目标函数) **
+- **Cost function(代价函数)**
+- **Empirical Risk(经验风险)**</code></pre><p>The <strong>empirical loss</strong> measures the total loss over our entire dataset</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130215426472.png" alt="image-20200130215426472"></p>
+</li>
+<li><p>Binary Cross Entropy Loss</p>
+<p><strong>Cross Entropy Loss</strong> can be used with models that output a <strong>probability</strong> between 0 and 1</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130220441328.png" alt="image-20200130220441328"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss = tf.reduce_mean( tf.nn.softmax_cross_entropy_with_logits(y, predicted) )</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>Mean Square Error Loss</p>
+<p><strong>MSE</strong> loss can be used with regression models that output continuous real numbers</p>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130220717891.png" alt="image-20200130220717891"></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loss = tf.reduce_mean( tf.square(tf.substract(y, predicted)) )</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Training-Neural-Networks"><a href="#Training-Neural-Networks" class="headerlink" title="Training Neural Networks"></a>Training Neural Networks</h1><ul>
+<li><p>Loss Optimization</p>
+<p>We want to find the nerwork weights that achieve <strong>the lowest loss</strong></p>
+</li>
+</ul>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130221610454.png" alt="image-20200130221610454"></p>
+<ul>
+<li>Gradient Descent<ol>
+<li>Initialize weights randomly 服从正态分布 $N(0, \sigma^2)$</li>
+<li>Loop until convergence:</li>
+<li>​    Compute gradient, $\frac{\partial J(W)}{\partial W}$</li>
+<li>​    Update weights, $W \Leftarrow W - \eta \frac{\partial J(W)}{\partial W}$</li>
+<li>Return weights</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">weights = tf.Variable( [tf.random.normal()] )</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> g:</span><br><span class="line">        loss = compute_loss(weights)</span><br><span class="line">        gradient = g.gradient(loss, weights)</span><br><span class="line">    </span><br><span class="line">    weights = weights - lr * gradient</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Computing Gradients: Backpropagation</li>
+</ul>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130230952638.png" alt="image-20200130230952638"></p>
+<ul>
+<li><p>Loss Functions Can Be Difficult to Optimize</p>
+<h6 id="Setting-the-Learning-Rate"><a href="#Setting-the-Learning-Rate" class="headerlink" title="Setting the Learning Rate"></a><strong>Setting the Learning Rate</strong></h6><ul>
+<li><strong>Small Learning rate</strong> converges slowly and gets stuck in false local minima(伪局部最小值)</li>
+<li><strong>Large Learning rate</strong> overshoot, become unstable and diverge</li>
+<li><strong>Stable Learning rate</strong> converge smoothly and avoid local minima</li>
+</ul>
+</li>
+<li><p>Adaptive Learning Rates</p>
+<p>梯度下降的优化方法【<a href="https://ruder.io/optimizing-gradient-descent/】" target="_blank" rel="noopener">https://ruder.io/optimizing-gradient-descent/】</a></p>
+</li>
+</ul>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200130233734858.png" alt="image-20200130233734858"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">model = tf.keras.Sequentail([...])</span><br><span class="line"></span><br><span class="line"><span class="comment"># pick your favourite optimizer</span></span><br><span class="line">optimizer = tf.keras.optimizer.SGD()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>: <span class="comment"># loop forever</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># forever pass through the network</span></span><br><span class="line">    prediction = model(x)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape:</span><br><span class="line">        <span class="comment"># compute the loss</span></span><br><span class="line">        loss = compute_loss(y, prediction)</span><br><span class="line">        </span><br><span class="line">    <span class="comment"># update the weights using the gradient</span></span><br><span class="line">    grads = tape.gradient(loss, model.trainable_variables)</span><br><span class="line">    optimizer.apply_gradients(zip(grads, model.trainable_variables))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Overfitting 过拟合</p>
+<p>过拟合的处理方法：使用正则(Regularization)方法</p>
+</li>
+<li><p>Regularization</p>
+<p>Technique that constrains our optimization problem to discourage complex models.</p>
+<p>一种限制优化问题来阻止复杂化模型的方法。</p>
+<p>常用正则化方法：</p>
+<ol>
+<li><p>Dropout</p>
+<p>During training, randomly set some activations to 0</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.keras.layers.Dropout(p=<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Early Stopping</p>
+<p>Stop training before we have a chance to overfit</p>
+</li>
+</ol>
+<p><img src="L1-Introduction-to-Deep-Learning/image-20200131204321368.png" alt="image-20200131204321368"></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/12/L1-Introduction-to-Deep-Learning/" data-id="ck6ja1068000560jdcbvk0njt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI-Deep-Learning/" rel="tag">AI,Deep Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-C++对象和类" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/" class="article-date">
@@ -181,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/" data-id="ck6j9093f0001rcjdc6527brx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/" data-id="ck6ja105v000060jdhg86gzmf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -318,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/" data-id="ck6j909380000rcjdbanahtz6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/" data-id="ck6ja1061000160jd7900e86i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -524,7 +685,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/03/C++%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0/" data-id="ck6j9093k0004rcjdgrf2gr6l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/03/C++%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0/" data-id="ck6ja1067000460jd84vc8kp9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -579,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/01/C++%E5%BC%80%E5%A7%8B/" data-id="ck6j9093j0003rcjd49w80qmp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/01/C++%E5%BC%80%E5%A7%8B/" data-id="ck6ja1065000360jdfl3lh1xe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,16 +760,30 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Learning/">C++ Learning</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Learning/">C++ Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MIT6-S191/">MIT6.S191</a></li></ul>
     </div>
   </div>
 
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI-Deep-Learning/" rel="tag">AI,Deep Learning</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI-Deep-Learning/" style="font-size: 10px;">AI,Deep Learning</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -625,6 +800,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/02/12/L1-Introduction-to-Deep-Learning/">L1_Introduction_to_Deep_Learning</a>
+          </li>
         
           <li>
             <a href="/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">C++ 对象和类</a>
