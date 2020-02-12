@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>C++ 对象和类 | Konoleoda&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="123456789101112131415161718192021222324#ifndef STOCK00_H#define STOCK00_H#include &lt;string&gt;class Stock&amp;#123;private:	std::string company;	long shares;	double share_val;	double total_val;	void set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ 对象和类">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/index.html">
+<meta property="og:site_name" content="Konoleoda&#39;s Blog">
+<meta property="og:description" content="123456789101112131415161718192021222324#ifndef STOCK00_H#define STOCK00_H#include &lt;string&gt;class Stock&amp;#123;private:	std::string company;	long shares;	double share_val;	double total_val;	void set">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-12T11:43:44.000Z">
+<meta property="article:modified_time" content="2020-02-12T11:45:00.086Z">
+<meta property="article:author" content="Liu Chao">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="cv">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Konoleoda&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Konoleoda&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C++对象和类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/" class="article-date">
+  <time datetime="2020-02-12T11:43:44.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-Learning/">C++ Learning</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++ 对象和类
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> STOCK00_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STOCK00_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> company;</span><br><span class="line">	<span class="keyword">long</span> shares;</span><br><span class="line">	<span class="keyword">double</span> share_val;</span><br><span class="line">	<span class="keyword">double</span> total_val;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set_tot</span><span class="params">()</span> </span>&#123; total_val = shares * share_val; &#125; <span class="comment">// 自动变为内联函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">double</span> price)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;; <span class="comment">// note semicolon at the end;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h3><p>C++中的类成员默认是private的，即不可外部访问，只有显式定义为public才可为外部访问。</p>
+<h3 id="实现类成员函数"><a href="#实现类成员函数" class="headerlink" title="实现类成员函数"></a>实现类成员函数</h3><ul>
+<li><p>定义成员函数时，使用作用域解析符(::)来标识函数所属的类；</p>
+</li>
+<li><p>类方法可以访问类的private组件。</p>
+<p>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> Stock:: update(<span class="keyword">double</span> priice)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>NOTE:</p>
+<ul>
+<li>定义在类声明中的函数都自动变为<strong>内联函数</strong>，例如上述中的set_tot()函数。</li>
+</ul>
+<h3 id="使用类"><a href="#使用类" class="headerlink" title="使用类"></a>使用类</h3><p>要创建类对象，可以声明类变量，也可以使用new为类对象分配存储空间。<strong>类和结构体类似。</strong></p>
+<ul>
+<li><p>声明类变量</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stock cat;<span class="comment">// 声明一个类变量</span></span><br><span class="line">cat.acquire(<span class="string">"NanoSmart"</span>, <span class="number">20</span>, <span class="number">12.50</span>);</span><br><span class="line">cat.show();</span><br><span class="line">cat.buy(<span class="number">15</span>, <span class="number">18.125</span>);</span><br><span class="line">cat.show();</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>new</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stock* cat = <span class="keyword">new</span> Stock();</span><br><span class="line">cat-&gt;acquire(<span class="string">"NanoSmart"</span>, <span class="number">20</span>, <span class="number">12.50</span>);</span><br><span class="line">cat-&gt;show();</span><br><span class="line">cat-&gt;buy(<span class="number">15</span>, <span class="number">18.125</span>);</span><br><span class="line">cat-&gt;show();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">string</span> company;</span><br><span class="line">	<span class="keyword">long</span> shares;</span><br><span class="line">	<span class="keyword">double</span> share_val;</span><br><span class="line">	<span class="keyword">double</span> total_val;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">set_tot</span><span class="params">()</span> </span>&#123; total_val = shares * share_val; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">double</span> price)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">	Stock(); <span class="comment">// Default constructor;</span></span><br><span class="line">	Stock(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp; co, <span class="keyword">long</span> n = <span class="number">0</span>, <span class="keyword">double</span> pr = <span class="number">0.0</span>);</span><br><span class="line">	~Stock(); <span class="comment">// noisy destructor</span></span><br><span class="line">&#125;; <span class="comment">// note semicolon at the end;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>构造函数</p>
+<ol>
+<li><p>可重载， public</p>
+</li>
+<li><p><strong>C++11 列表初始化</strong></p>
+<p>可以使用列表初始化语法来初始化结构体和类，只要提供与某个构造函数的参数列表匹配的内容即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Stock stock1("NanoSmart", 12, 20.0);</span></span><br><span class="line"><span class="comment">//Stock stock1 = &#123; "NanoSmart", 12, 20.0 &#125;;</span></span><br><span class="line">Stock stock1&#123; <span class="string">"NanoSmart"</span>, <span class="number">12</span>, <span class="number">20.0</span> &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果构造函数里面使用了new分配内存，则必须在析构函数中使用delete释放内存。</p>
+</li>
+</ol>
+</li>
+<li><p>析构函数</p>
+<p><strong>如果构造函数里面使用了new分配内存，则必须在析构函数中使用delete释放内存。</strong></p>
+</li>
+</ul>
+<h3 id="const-成员函数"><a href="#const-成员函数" class="headerlink" title="const 成员函数"></a>const 成员函数</h3><p>在定义const类时，保证要调用的成员函数为const，即保证成员函数不会更改类变量。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Stock land = Stock(<span class="string">"Kliu Prodsa"</span>);</span><br><span class="line">land.show(); <span class="comment">// show 必须为const， 但是根据Stock的定义，show为void，所以C++11 新语法为</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//声明</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::show</span><span class="params">()</span> <span class="keyword">const</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="this指针"><a href="#this指针" class="headerlink" title="this指针"></a>this指针</h3><p>问题：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> Stock &amp; <span class="title">Stock::topval</span><span class="params">(<span class="keyword">const</span> Stock &amp; s)</span> <span class="keyword">const</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s.total_val &gt; total_val)</span><br><span class="line">        <span class="keyword">return</span> s; <span class="comment">// 返回参数对象</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> ????;<span class="comment">// 返回被调用对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用this指针因为返回的是引用，而this是对象的地址，所以应该返回</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> *<span class="keyword">this</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h3><p>运算符函数的格式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">operatorop(argument-<span class="built_in">list</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="友元"><a href="#友元" class="headerlink" title="友元"></a>友元</h3><p>C++控制对类对象私有部分的访问，通常，公有类方法提供唯一的访问途径，但是有时候这种限制太严格，以至于不适合特定的编程问题，在这种情况下，C++提供了另外一种形式的访问权限：友元。</p>
+<ul>
+<li><p>创建友元</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">friend</span> Time <span class="keyword">operator</span>*(<span class="keyword">double</span> m, <span class="keyword">const</span> Time &amp; t);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>创建友元函数的第一步就是将其原型放在类声明中，并在原型声明前加上关键字friend，该原型意味着：</p>
+<ol>
+<li><p>虽然operator*()函数是在类声明中声明的，但它不是成员函数，因此不能使用成员运算符来调用；</p>
+</li>
+<li><p>虽然operator*()函数不是成员函数，但它与成员函数的访问权限相同。</p>
+<p>友元函数的定义：（<strong>不要加Time::限定符</strong>）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Time <span class="keyword">operator</span>*(<span class="keyword">double</span> m, <span class="keyword">const</span> Time &amp; t)</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/" data-id="ck6j9093f0001rcjdc6527brx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">C++ 复合类型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C-Learning/">C++ Learning</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/12/C++%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB/">C++ 对象和类</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/C++%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B/">C++ 复合类型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/03/C++%E5%BE%AA%E7%8E%AF%E5%92%8C%E5%87%BD%E6%95%B0/">C++ 循环和函数</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/01/C++%E5%BC%80%E5%A7%8B/">C++ 开始</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Liu Chao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
